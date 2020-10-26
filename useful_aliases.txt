@@ -1,3 +1,12 @@
+NOTE FOR USE (newbies): If you're unfamiliar with bash aliases in Linux, they are simply a short word reserved to execute a command from the command line. You should always check that the script works before assuming it does, so type the long form into the terminal and check that the output is what was desired.
+
+Where to put these scripts (newbies)?
+"~/" aka "/home/$yourlocalusername/" typically contains a hidden file called ".bashrc". Simply open it up and look for a good place to put your custom aliases (some distros leave a hint in the comments, which are denoted by starting a line with a '#'). You can drop a line by pressing enter and type or copy/paste these in. You should see a few preset aliases already in that .bashrc file for things like 'la' which call 'ls -a' system command as a standard short form. Use the pre-defined alias scripts as reference guides if you're unsure or feeling unconfident.
+
+Problems (newbies)?
+"I entered my alias in and saved the script but my alias commands still don't work! What now?" - For the aliases we define to be ready for use the whole script file needs to be executed first. When we boot a Linux system it is called automagically on startup, making this process seamless. But if you just updated the file and saved it, your aliases may not be available until after the script is run, either by manually running the script yourself (CLI:~$ "bash ./bashrc") or by simply rebooting the PC.
+
+# MY USEFUL ALIASES
 # ClamAV virus scan 
 alias systemscan='clamscan -vrz --statistics=pcre --scan-mail=yes --phishing-sigs=yes --phishing-scan-urls=yes --gen-json --dev-performance --max-scantime=2000000 /home/*'
 alias sysscan=systemscan
