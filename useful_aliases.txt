@@ -1,0 +1,30 @@
+# ClamAV virus scan 
+alias systemscan='clamscan -vrz --statistics=pcre --scan-mail=yes --phishing-sigs=yes --phishing-scan-urls=yes --gen-json --dev-performance --max-scantime=2000000 /home/*'
+alias sysscan=systemscan
+alias scanall=sysscan
+# Just remember this will scan everything under home, so there may be some recursion errors depending on
+# any links or symbolic links / references in the home folder. It's best to modify this to suit your setup
+# but this script serves as an easy template to start from
+
+# Display disk usage of root and media folders, sorted by size and rendered in humna-readable format
+alias diskusage='sudo du -hsx /* | sort -rh | head -n 45; sudo du -hsx /media/* | sort -rh | head -n 45; lsblk'
+
+# Checks S.M.A.R.T. temperature sensors on connected devices connected to SATA / SCSI
+
+# Get current system information. Extremely useful when seeking help on forums, setting up new hardware, etc.
+alias sysinfo='sudo fdisk -l; blkid; lshw; lscpu; lspci; cat /proc/version; diskusage; df -hl -x squashfs; temp;'
+
+alias temp='sudo watch hddtemp /dev/sd* -n 1'
+alias temps=temp
+alias watchtemp='sudo watch hddtemp /dev/sd*'
+
+# Launch chrome browser as normal/incognito mode
+alias chrome='google-chrome-stable'
+alias chromei='google-chrome-stable --incognito'
+# Launch chromium browser as normal/incognito mode
+alias chromi='chromium-browser'
+alias chromii='chromium-browser --incognito'
+
+# For DOS kids...
+alias cls='clear'
+
