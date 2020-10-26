@@ -19,13 +19,11 @@ alias scanall=sysscan
 alias diskusage='sudo du -hsx /* | sort -rh | head -n 45; sudo du -hsx /media/* | sort -rh | head -n 45; lsblk'
 
 # Checks S.M.A.R.T. temperature sensors on connected devices connected to SATA / SCSI
+alias temp='sudo watch hddtemp /dev/sd* -n 1'
+alias temps=temp
 
 # Get current system information. Extremely useful when seeking help on forums, setting up new hardware, etc.
 alias sysinfo='sudo fdisk -l; blkid; lshw; lscpu; lspci; cat /proc/version; diskusage; df -hl -x squashfs; temp;'
-
-alias temp='sudo watch hddtemp /dev/sd* -n 1'
-alias temps=temp
-alias watchtemp='sudo watch hddtemp /dev/sd*'
 
 # Launch chrome browser as normal/incognito mode
 alias chrome='google-chrome-stable'
