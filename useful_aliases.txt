@@ -22,6 +22,9 @@ alias diskusage='sudo du -hsx /* | sort -rh | head -n 45; sudo du -hsx /media/* 
 alias temp='sudo watch hddtemp /dev/sd* -n 1'
 alias temps=temp
 
+# Insanely detailed system information printout
+alias sysinfo='sudo fdisk -l; blkid; lshw; lscpu; lspci; cat /proc/version; diskusage; df -hl -x squashfs; temp;'
+
 # Get current system information. Extremely useful when seeking help on forums, setting up new hardware, etc.
 alias sysinfo='sudo fdisk -l; blkid; lshw; lscpu; lspci; cat /proc/version; diskusage; df -hl -x squashfs; temp;'
 
@@ -35,3 +38,33 @@ alias chromii='chromium-browser --incognito'
 # For DOS kids...
 alias cls='clear'
 
+# Disable IPv6 so your mac address doesn't give away your identity while trying to browse anonymously over a VPN in a clean browser.
+alias ip6="sudo sysctl net.ipv6.conf.default.disable_ipv6=1; sudo sysctl net.ipv6.conf.all.disable_ipv6=1"
+alias rip6="sudo sysctl net.ipv6.conf.default.disable_ipv6=0; sudo sysctl net.ipv6.conf.all.disable_ipv6=0"
+
+# Shorten/truncate the displayed path in the terminal
+alias shorten='export PROMPT_DIRTRIM=1'
+
+# SSH server start/stop
+alias sshserver='sudo systemctl start ssh; systemctl status ssh; echo "run sshstop to stop server"'
+alias sshstop='sudo systemctl stop ssh; systemctl status ssh'
+
+# Nvidia GPU active monitoring
+alias gpu='watch -n 1 nvidia-smi -q -d UTILIZATION'
+alias gpumon='watch -n 1 nvidia-smi'
+
+# RAM DISK
+# Ever feel like using your RAM for hard drive storage? Fantastic way to quickly edit a batch of files without thrashing an SSD
+#alias ramdisk="sudo mount -t tmpfs -o rw,size=16G tmpfs /mnt/ramdisk"
+# Or you can use the better version that allows for entering the amount of ram to allocate to ramdisk drive as an argument by using the following instead...
+# Create a ramdisk of variable size with integer parameter for size in gigabytes
+ramd(){
+	sudo mount -t tmpfs -o rw,size="$1"G tmpfs /mnt/ramdisk
+}
+# alias to mount the default ramdisk size
+alias ramdisk="ramd 16"
+
+# backup any file given, and save it in place with the extension bkp and the same name
+bkp(){
+	cp "$1" "$1".bkp
+}
